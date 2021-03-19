@@ -1,0 +1,1 @@
+# prescription-management-using-django-with-covid-detect
