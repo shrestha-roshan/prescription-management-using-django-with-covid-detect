@@ -1,0 +1,135 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View doctors</title>
+    <link href="{% static 'doctor/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/viewevent.css' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/card.css' %}">
+
+</head>
+<body>
+      {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    <header>
+		<nav class="navbar navbar-expand-md navbar-dark"
+			style="background-color: black">
+			<a class="navbar-brand" href="">
+        <img src="{% static 'doctor/virus.png'%}" style = " width: 50px; height: auto;"> COVID-X 
+      </a>
+
+			<ul class="navbar-nav">
+            <a href="" class="nav-link">Are You a Reception?</a>
+			</ul>
+		</nav>
+	</header>
+		
+		
+    <div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+	                </button>
+                </div>
+	  		        <h1><a href="index.html" class="logo" >User</a></h1>
+                    <ul class="list-unstyled components mb-5">
+
+                        <li>
+                            <a href="../recept/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+                        </li>
+                        <li class="active">
+                            <a href="../recept/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+                        </li>
+                        <li>
+                            <a href="../recept/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
+                        </li>
+                        <li >
+                            <a href="../recept/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+                        </li>
+                        <li>
+                            <a href="../recept/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+                        </li>
+                        <li>
+                            <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
+                        </li>                        
+                    </ul>
+    	    </nav>
+    <br>
+    <div style="margin-left:150px">
+    <div class="container mt-5">
+        <h1>Register Patient</h1>
+        <form style="font-size:20px; color:black" class="needs-validation" method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="inputAddress">Full Name</label>
+                <input type="text" class="form-control"  name='name' required>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Email</label>
+                <input type="email" class="form-control" name='email' >
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" name='address' >
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Date Of Birth</label>
+                <input type="date" class="form-control" name='dob' >
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label>Contact</label>
+                <input type="int" class="form-control" name='contact'  required>
+                </div>
+                <div class="form-group col-md-3">
+                <label for="inputState">Gender</label>
+                <select id="inputState" class="form-control" name='gender'>
+                    <option selected>Choose...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                </div>
+                <div class="form-group col-md-3">
+                <label for="inputState">Blood</label>
+                <select class="form-control" name='blood'>
+                    <option selected>Choose...</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <br><br><br>
+    </div>
+    </div>
+    </div>
+    
+     {% comment %} {% else %}
+         You are not Logged in..Please Try Logging in again
+    {% endif %}  {% endcomment %}
+
+    <script src="{% static 'doctor/js/jquery.min.js' %}"></script>
+    <script src="{% static 'doctor/js/main.js' %}"></script>
+</body>
+</html>

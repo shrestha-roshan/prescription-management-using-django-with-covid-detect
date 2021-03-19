@@ -1,0 +1,131 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View patients</title>
+    <link href="{% static 'doctor/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/viewevent.css' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'doctor/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/card.css' %}">
+</head>
+<body>
+      {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    <header>
+		<nav class="navbar navbar-expand-md navbar-dark"
+			style="background-color: black">
+			<a class="navbar-brand" href="">
+        <img src="{% static 'doctor/virus.png'%}" style = " width: 50px; height: auto;"> COVID-X 
+      </a>
+
+			<ul class="navbar-nav">
+            <a href="" class="nav-link">Are You a Reception?</a>
+			</ul>
+		</nav>
+	</header>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo" >User</a></h1>
+         <ul class="list-unstyled components mb-5">
+          <li>
+              <a href="../doc/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+          </li>
+          <li>
+            <a href="../doc/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+          </li>
+          <li class="active">
+            <a href="../doc/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
+          </li>
+          <li>
+            <a href="../doc/covid_detection"><span class="fa fa-book mr-3"></span> Covid Detection</a>
+          </li>
+          <li>
+            <a href="../doc/prescription"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+          </li>
+          <li>
+              <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
+          </li>
+        </ul>
+
+    	</nav>
+    <br>
+    
+    <div class="container mt-5">
+        <h1>Patient Details</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <thead><div class="input-group">
+                    <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" />
+                        <label class="form-label" for="form1">Search</label>
+                        </div>
+                        <button type="button" class="btn btn-primary" style = "height: 40px; ">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>    
+                </thead>
+                <tr  style ="font-weight: bold; font-size:100%">
+                    
+                    <td>Patient's ID</td> 
+                    <td>Patients's Name </td>  
+                    <td>DOB</td>   
+                    <td>Contact</td>  
+                    <td>Email</td> 
+                    <td>Address</td> 
+                    <td>Gender</td> 
+                    <td>Blood Group</td> 
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patient %}
+                    <tr>
+                        <td>{{patient.id}}</td>
+                        <td>{{patient.name}}</td>
+                        <td>{{patient.dob}}</td>
+                        <td>{{patient.contact}}</td>
+                        <td>{{patient.email}}</td>
+                        <td>{{patient.address}}</td>
+                        <td>{{patient.gender}}</td>
+                        <td>{{patient.blood}}</td>
+
+                        <td><a href="../doc/delete/{{patient.id}}" class="btn btn-dark" onclick="return confirm('Are you sure to delete 
+                        this data?')">Delete</a></td>
+                        <td><a href="../doc/update/{{patient.id}}" class="btn btn-dark">Update</a></td>
+                        <td><a href="{% url 'doc-give-prescription' patient.id patient.name%}" class="btn btn-dark">Prescription</a></td>
+
+                    </tr>
+                    
+                {% empty %}
+                    There are no patients.
+                {% endfor %}
+            </tbody>    
+        </table>    
+        <a href="../doc/add_pat" class="btn btn-primary" id="register">Register Patient</a>
+        <a href="../../logout/" class="btn btn-secondary">Logout</a>
+    </div><br>
+    
+
+    
+     {% comment %} {% else %}
+         You are not Logged in..Please Try Logging in again
+    {% endif %}  {% endcomment %}
+
+     <script src="{% static 'doctor/js/jquery.min.js' %}"></script>
+    <script src="{% static 'doctor/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete Patient</title>
+    <link href="{% static 'doctor/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/viewevent.css' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'doctor/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/card.css' %}">
+</head>
+<body>
+    <header>
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: black">  
+      <a class="navbar-brand" href="">
+        <img src="{% static 'doctor/virus.png'%}" style = " width: 50px; height: auto;"> COVID-X 
+      </a>
+			<ul class="navbar-nav">
+            <a href="" class="nav-link">Are You a Reception?</a>
+			</ul>
+		</nav>
+	</header>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo" >COVID-X</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li>
+              <a href="../doc/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+          </li>
+          <li>
+            <a href="../doc/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+          </li>
+          <li>
+            <a href="../doc/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
+          </li>
+          <li>
+            <a href="../doc/view_doc"><span class="fa fa-book mr-3"></span> Covid Detection</a>
+          </li>
+          <li>
+            <a href="../doc/prescription"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+          </li>
+          <li>
+              <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
+          </li>
+        </ul>
+
+    	</nav>
+    
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    
+    <br>
+    
+    <div class="container mt-5">
+        <table class="table">
+                <thead>These datas are deleted</thead>
+
+            <thead class="thead-dark">
+                <tr>
+                    <td>Patient's ID</td> 
+                    <td>Patients's Name </td>  
+                    <td>DOB</td>   
+                    <td>Contact</td>  
+                    <td>Email</td> 
+                    <td>Address</td> 
+                    <td>Gender</td> 
+                    <td>Blood Group</td> 
+                </tr>
+            </thead>
+            <tbody>
+                    {% csrf_token %}
+                    <tr>
+                        <td>{{patient.id}}</td>
+                        <td>{{patient.pat_name}}</td>
+                        <td>{{patient.pat_dob}}</td>
+                        <td>{{patient.pat_contact}}</td>
+                        <td>{{patient.pat_email}}</td>
+                        <td>{{patient.pat_address}}</td>
+                        <td>{{patient.pat_gender}}</td>
+                        <td>{{patient.pat_blood}}</td>
+                    </tr>
+                    
+            </tbody>    
+        </table>    
+        <a href="../doc/view_pat" class="btn btn-primary" id="register">View Patient</a>
+    </div><br>
+    
+
+    
+    {% comment %} {% else %}
+         You are not Logged in..Please Try Logging in again
+    {% endif %} {% endcomment %}
+
+     <script src="{% static 'doctor/js/jquery.min.js' %}"></script>
+    <script src="{% static 'doctor/js/main.js' %}"></script>
+</body>
+</html>
