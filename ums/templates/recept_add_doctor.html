@@ -45,22 +45,22 @@
                     <ul class="list-unstyled components mb-5">
 
                         <li>
-                            <a href="../recept/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+                            <a href="{% url "recept-dashboard"%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
                         </li>
                         <li>
-                            <a href="../recept/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+                            <a href="{% url "recept-add-patient" %}"><span class="fa fa-plus mr-3"></span> Add Patients</a>
                         </li>
                         <li>
-                            <a href="../recept/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
+                            <a href="{% url "recept-view-patient"%}"><span class="fa fa-book mr-3"></span> View Patient</a>
                         </li>
                         <li class="active">
-                            <a href="../recept/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+                            <a href="{% url "recept-add-doctor"%}"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
                         </li>
                         <li>
-                            <a href="../recept/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
+                            <a href="{% url "recept-view-doctor"%}"><span class="fa fa-book mr-3"></span> View Doctors</a>
                         </li>
                         <li>
-                            <a href="#"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+                            <a href="{% url 'recept-prescription'%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
                         </li>
                         <li>
                             <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
@@ -69,7 +69,7 @@
     	    </nav>
     <br>
     <div style="margin-left:150px">
-    <div class="container mt-5">
+    <div class="container mt-5 card" style="background-color:#dcdcdc"><br>
         <h1>Register Doctor</h1>
         
         <form style="font-size:20px; color:black" class="needs-validation" method="post">
@@ -84,12 +84,12 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" name="email"  required>
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" name="email"  required>
                 </div>
                 <div class="form-group col-md-6">
-                <label>Password</label>
-                <input type="password" class="form-control"  name ="password" required>
+                    <label>Password</label>
+                    <input type="password" class="form-control"  name ="password" required>
                 </div>
             </div>
             <div class="form-group">
@@ -98,49 +98,49 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <label>Phone</label>
-                <input type="text" class="form-control" name="contact">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" name="contact">
                 </div>
                 <div class="form-group col-md-6">
-                <label>Date of Birth</label>
-                <input type="date" class="form-control" name="dob">
+                    <label>Date of Birth</label>
+                    <input type="date" class="form-control" name="dob">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <label>Speciality</label>
-                <input type="text" class="form-control" name="speciality">
+                    <label>Speciality</label>
+                    <input type="text" class="form-control" name="speciality">
                 </div>
                 <div class="form-group col-md-3">
-                <label>Gender</label>
-                <select id="inputState" class="form-control" name='gender'>
-                    <option selected>Choose...</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                </select>
+                    <label>Gender</label>
+                    <select id="inputState" class="form-control" name='gender'>
+                        <option selected>Choose...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-3">
-                <label>Blood</label>
-                <select class="form-control" name="blood">
-                    <option selected>Choose...</option>
-                    <option>A+</option>
-                    <option>A-</option>
-                    <option>B+</option>
-                    <option>B-</option>
-                    <option>O+</option>
-                    <option>O-</option>
-                    <option>AB+</option>
-                    <option>AB-</option>
-                </select>
+                    <label>Blood</label>
+                    <select class="form-control" name="blood">
+                        <option selected>Choose...</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
         <br><br><br>
     </div>
-    </div>
-    </div>
+   
+    
     
      {% comment %} {% else %}
          You are not Logged in..Please Try Logging in again

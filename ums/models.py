@@ -19,8 +19,8 @@ BLOOD = (
 )
 # Create your models here.
 class Doctor(models.Model):
-    uname = models.CharField('Name',max_length=100, unique = True)
-    name = models.CharField('Username',max_length=30)
+    uname = models.CharField('Username',max_length=100, unique = True)
+    name = models.CharField('Full Name',max_length=30)
     email = models.EmailField('Email',max_length = 100)
     password = models.CharField('Password',max_length = 300, unique =True)
     address = models.CharField('Address',max_length = 50)
@@ -116,3 +116,19 @@ class Patient_trash(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# view function for searhing in the database page
+def patient_search(request):
+    if request.method=='POST':
+        search=request.POST['srh']
+        if search:
+            match=Patient.objects.filter(name__icontains=search)
+            if match:
+                return render(request,'event/search.html',{'sr':match})
+            else:
+                return HttpResponse('NO EVENT FOUND!')                  
+        else:
+            return HttpResponse('ENTER EVENT NAME!!')
+    else:
+        return render(request,'event/searchdata.html')

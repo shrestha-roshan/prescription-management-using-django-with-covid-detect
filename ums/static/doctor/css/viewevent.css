@@ -1,4 +1,4 @@
-#registere{
+/* #registere{
     align-self: center;
     margin-left: 600px;
 }
@@ -98,8 +98,6 @@ nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
 	padding-top:30px;
 }
 
-
-/* mobile view */
 @media (max-width:500px)
 {
 	.navbar-nav{
@@ -146,4 +144,4 @@ nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
 
 
 
- 
+  */

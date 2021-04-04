@@ -44,32 +44,29 @@
 	  		        <h1><a href="index.html" class="logo" >User</a></h1>
                     <ul class="list-unstyled components mb-5">
                         <li>
-                            <a href="{%url 'doc-dashboard'%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
+                        <a href="{% url 'doc-dashboard'%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
                         </li>
                         <li class="active">
-                            <a href="../doc/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+                            <a href="{% url 'doc-add-patient'%}"><span class="fa fa-plus mr-3"></span> Add Patients</a>
                         </li>
                         <li>
-                            <a href="../doc/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
-                        </li>
-                        <li >
-                            <a href="../doc/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+                            <a href="{% url 'doc-view-patient'%}"><span class="fa fa-book mr-3"></span> View Patient</a>
                         </li>
                         <li>
-                            <a href="../doc/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
+                            <a href="{% url 'covid-detect'%}"><span class="fa fa-book mr-3"></span> Covid Detection</a>
                         </li>
                         <li>
-                            <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+                            <a href="{% url 'doc-prescription'%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
                         </li>
-                        <li>
+                        <li>    
                             <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
-                        </li>                        
+                        </li>                     
                     </ul>
     	    </nav>
     <br>
 
     <div style="margin-left:150px">
-    <div class="container mt-5">
+    <div class="container mt-5 card" style="background-color:#dcdcdc"><br>
         <h1>Give Prescription</h1>
         <form style="font-size:20px; color:black" class="needs-validation" method="POST">
             {% csrf_token %}
@@ -106,7 +103,7 @@
     </div>
     </div>
     <div style="margin-left:150px">
-    <div class="container mt-5">
+    <div class="container mt-5 card" style="background-color:#dcdcdc"><br>
     <h1>{{patient.name}}'s History</h1>
         <table class="table">
             <thead class="thead-dark">
@@ -130,6 +127,9 @@
                     <tr>
                         <td>{{prescription.prescription}}</td>
                         <td>{{prescription.date}}</td>
+                        
+                        <td><a href="{% url 'doctor-prescription-delete' patient.id patient.name prescription.id%}" class="btn btn-dark">Delete</a></td>
+
                     </tr>
                     
                 {% empty %}

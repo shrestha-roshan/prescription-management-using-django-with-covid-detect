@@ -45,33 +45,33 @@
                     <ul class="list-unstyled components mb-5">
 
                         <li>
-                            <a href="../recept/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+                            <a href="{% url "recept-dashboard"%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
                         </li>
-                        <li class="active">
-                            <a href="../recept/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
-                        </li>
-                        <li>
-                            <a href="../recept/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
-                        </li>
-                        <li >
-                            <a href="../recept/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+                        <li  class="active">
+                            <a href="{% url "recept-add-patient" %}"><span class="fa fa-plus mr-3"></span> Add Patients</a>
                         </li>
                         <li>
-                            <a href="../recept/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
+                            <a href="{% url "recept-view-patient"%}"><span class="fa fa-book mr-3"></span> View Patient</a>
                         </li>
                         <li>
-                            <a href="#"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+                            <a href="{% url "recept-add-doctor"%}"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+                        </li>
+                        <li>
+                            <a href="{% url "recept-view-doctor"%}"><span class="fa fa-book mr-3"></span> View Doctors</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'recept-prescription'%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
                         </li>
                         <li>
                             <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
-                        </li>                        
+                        </li>                       
                     </ul>
     	    </nav>
     <br>
     <div style="margin-left:150px">
-    <div class="container mt-5">
-        <h1>Register Patient</h1>
-        <form style="font-size:20px; color:black" class="needs-validation" method='post'>
+    <div class="container mt-5 card" style="background-color:#dcdcdc">
+        <br><h1>Register Patient</h1>
+        <form style="font-size:20px; color:black; border-class;" class="needs-validation" method='post'>
             {% csrf_token %}
             <div class="form-group">
                 <label for="inputAddress">Full Name</label>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="form-group col-md-3">
                 <label for="inputState">Gender</label>
-                <select id="inputState" class="form-control" name='gender'>
+                <select id="inputState" class="custom-select" name='gender'>
                     <option selected>Choose...</option>
                     <option>Male</option>
                     <option>Female</option>

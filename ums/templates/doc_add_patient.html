@@ -53,10 +53,10 @@
                             <a href="{% url 'doc-view-patient'%}"><span class="fa fa-book mr-3"></span> View Patient</a>
                         </li>
                         <li>
-                            <a href="{% url 'covid-detection'%}"><span class="fa fa-book mr-3"></span> Covid Detection</a>
+                            <a href="{% url 'covid-detect'%}"><span class="fa fa-book mr-3"></span> Covid Detection</a>
                         </li>
                         <li>
-                            <a href="{% url 'doc-view-patient'%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+                            <a href="{% url 'doc-prescription'%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
                         </li>
                         <li>    
                             <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
@@ -65,7 +65,7 @@
     	    </nav>
     <br>
     <div style="margin-left:150px">
-    <div class="container mt-5">
+    <div class="container mt-5 card" style="background-color:#dcdcdc">
         <h1>Register Patient</h1>
         <form style="font-size:20px; color:black" class="needs-validation" method='post'>
             {% csrf_token %}

@@ -40,22 +40,22 @@
 	  		<h1><a href="index.html" class="logo" >COVID-X</a></h1>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-              <a href="../recept/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
+              <a href="{% url "recept-dashboard"%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
           </li>
           <li>
-            <a href="../recept/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+              <a href="{% url "recept-add-patient" %}"><span class="fa fa-plus mr-3"></span> Add Patients</a>
           </li>
           <li>
-            <a href="../recept/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
+              <a href="{% url "recept-view-patient"%}"><span class="fa fa-book mr-3"></span> View Patient</a>
           </li>
           <li>
-            <a href="../recept/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+              <a href="{% url "recept-add-doctor"%}"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
           </li>
           <li>
-            <a href="../recept/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
+              <a href="{% url "recept-view-doctor"%}"><span class="fa fa-book mr-3"></span> View Doctors</a>
           </li>
           <li>
-            <a href="../recept/prescription"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+              <a href="{% url "recept-prescription"%}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
           </li>
           <li>
               <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
@@ -68,7 +68,8 @@
     
     <br>
    
-  <div class="content-wrapper">
+  <div class="container mt-5 card" style="background-color:#dcdcdc"><br>
+    <h1>Reception Dashboard</h1>
     <div class="container-fluid">
       <div class="row">
 

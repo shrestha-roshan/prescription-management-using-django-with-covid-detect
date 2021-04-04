@@ -18,6 +18,16 @@
 </head>
 <body>
     {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    
+    {% comment %} flash message if search query not found {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+         
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+    {% endif %}
+
     <header>
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: black">
@@ -27,7 +37,6 @@
 
 			<ul class="navbar-nav">
             <a href="" class="nav-link">Are You a Reception?</a>
-          <a href="" class="nav-link" style="color:white; background-color:red;">Logout</a>
 			</ul>
 		</nav>
 	</header>
@@ -36,48 +45,53 @@
 			<nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
+	                <i class="fa fa-bars"></i>
 	          <span class="sr-only">Toggle Menu</span>
 	        </button>
         </div>
 	  		<h1><a href="index.html" class="logo" >User</a></h1>
-         <ul class="list-unstyled components mb-5">
-          <li>
-              <a href="../recept/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
-          </li>
-          <li>
-            <a href="../recept/add_pat"><span class="fa fa-plus mr-3"></span> Add Patients</a>
-          </li>
-          <li class="active">
-            <a href="../recept/view_pat"><span class="fa fa-book mr-3"></span> View Patient</a>
-          </li>
-          <li>
-            <a href="../recept/add_doc"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
-          </li>
-          <li>
-            <a href="../recept/view_doc"><span class="fa fa-book mr-3"></span> View Doctors</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
-          </li>
-          <li>
-              <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
-          </li>
-        </ul>
+            <ul class="list-unstyled components mb-5">
 
+            <li>
+                <a href="{% url "recept-dashboard"%}"><span class="fa fa-user mr-3"></span> Dashboard</a>
+            </li>
+            <li>
+                <a href="{% url "recept-add-patient" %}"><span class="fa fa-plus mr-3"></span> Add Patients</a>
+            </li>
+            <li  class="active">
+                <a href="{% url "recept-view-patient"%}"><span class="fa fa-book mr-3"></span> View Patient</a>
+            </li>
+            <li>
+                <a href="{% url "recept-add-doctor"%}"><span class="fa fa-plus mr-3"></span> Add Doctor</a>
+            </li>
+            <li>
+                <a href="{% url "recept-view-doctor"%}"><span class="fa fa-book mr-3"></span> View Doctors</a>
+            </li>
+            <li>
+                <a href="{% url 'recept-prescription' %}"><span class="fa fa-pencil-square-o mr-3"></span> Prescription </a>
+            </li>
+            <li>
+                <a href=""><span class="fa fa-pencil-square-o mr-3"></span> Logout </a>
+            </li>
+            </ul>
+            </ul>
     	</nav>
     <br>
     
-    <div class="container mt-5">
+    <div class="container mt-5 card" style="background-color:#dcdcdc">
+    <br><h1>List of Patients</h1>
         <table class="table">
             <thead><div class="input-group">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control" />
-                  <label class="form-label" for="form1">Search</label>
-                </div>
-                <button type="button" class="btn btn-primary" style = "height: 40px; ">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
+                <form method='post' action = "{% url 'doc-search-patient'%}">
+                    {% csrf_token %}
+
+                    <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" name='srh'/>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style = "height: 40px;">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
               </div>    
             </thead>
             <thead class="thead-dark">
@@ -109,7 +123,7 @@
                         <td><a href="" class="btn btn-dark" onclick="return confirm('Are you sure to delete 
                         this data?')">Delete</a></td>
                         <td><a href="../eventdataform/{{patient.id}}" class="btn btn-dark">Update</a></td>
-                        <td><a href="../prescription/{{patient.id}}" class="btn btn-dark">prescription</a></td>
+                        <td><a href="{% url 'recept-view-prescription' patient.id patient.name %}" class="btn btn-dark">prescription</a></td>
                     </tr>
                     
                 {% empty %}
@@ -118,7 +132,6 @@
             </tbody>    
         </table>    
         <a href="add_pat" class="btn btn-primary" id="register">Register Patient</a>
-        <a href="../../logout/" class="btn btn-secondary">Logout</a>
     </div><br>
     
 
@@ -126,7 +139,6 @@
     {% comment %} {% else %}
          You are not Logged in..Please Try Logging in again
     {% endif %}  {% endcomment %}
-
     <script src="{% static 'doctor/js/jquery.min.js' %}"></script>
     <script src="{% static 'doctor/js/main.js' %}"></script>
 </body>
